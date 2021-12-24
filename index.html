@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Chat on netlify</title>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+    <link rel="stylesheet" href="public/assets/css/styleLogin.css">
+    <link rel="stylesheet" href="public/assets/css/profileStyle.css">
+    <link rel="stylesheet" href="public/assets/css/styleSingup.css">
+    <link rel="stylesheet" href="public/assets/css/styleChat.css">
+    <script src="public/js/login.js"></script>
+    <script src="public/js/singup.js"></script>
+    <script src="public/js/dashboardChat.js"></script>
+    <script src="public/js/profile.js"></script>
+    <script src="netlify.js"></script>
+</head>
+<body>
+<div id="template"></div>
+<script type="text/html">
+import {fs} from './Node.js';
+const loginString = fs.readFileSync('public/html/login.html', 'utf8');
+const templateid = document.getElementById("template");
+const block = render(loginString);
+templateid.innerHTML=block;
+</script>
+<template id="tmpl"></template>
+</body>
+</html>
+
+
+

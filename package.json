@@ -1,10 +1,15 @@
 {
-  "name": "backend-project-lvl1",
+  "name": "hexlet",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/dianaromandiana/backend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/dianaromandiana/backend-project-lvl1/actions)",
+  "description": "hexlet",
   "main": "index.js",
+  "type": "module",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "brain-games": "node bin/brain-games.js"
   },
   "repository": {
     "type": "git",
