@@ -10,6 +10,6 @@ export function getRandomInRange(min, max) {
 
 //Проверка на корректность
 export function isCorrect(correctAnswer,checkAnswer){
-return (correctAnswer==checkAnswer) ? true : false;
+return (correctAnswer===checkAnswer) ? true : false;
 }
 
