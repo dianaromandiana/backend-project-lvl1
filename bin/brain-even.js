@@ -3,8 +3,8 @@ import * as cli from '../src/cli.js';
 import * as algorithmes from '../src/algorithmes.js';
 import readlineSync from 'readline-sync'; // КАК СДЕЛАТЬ ГЛОБАЛЬНЫМ импорт readlineSync
 
-//cli.askQuestion();
-//console.log("Answer 'Yes' if the number is even, otherwise answer 'No'");
+cli.askQuestion();
+console.log("Answer 'Yes' if the number is even, otherwise answer 'No'");
 
 let countTry=3;
 let countFalse=3;
@@ -19,22 +19,20 @@ let correctAnswer = algorithmes.definePrime(randomNumber);
 
 // проверка на правильный ответ или нет
   if(algorithmes.isCorrect(correctAnswer,userAnswer)){
-  console.log('Variant 1 ' + ' countFalse= '+ countFalse + ' countTry= ' + countTry);
+  //console.log('Variant 1 ' + ' countFalse= '+ countFalse + ' countTry= ' + countTry);
   countTry--;
   }else{
-    console.log('Variant 2 ' + ' countFalse= '+ countFalse + ' countTry= ' + countTry);
+  //console.log('Variant 2 ' + ' countFalse= '+ countFalse + ' countTry= ' + countTry);
   countFalse--;
   }
 
 }
 
 
+console.log('Congratulations, ' + userName + '!');
 
 
-//console.log('Congratulations, ' + userName + '!');
-
-
-//можно дополнить
+//можно дополнить вариантами
 function setBooleanAnswer(strAnswer){
 if (strAnswer=="y" || strAnswer == "Y" || strAnswer == "yes" || strAnswer == "Yes"){
  return true;
