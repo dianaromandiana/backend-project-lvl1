@@ -1,36 +1,25 @@
 import {userName} from '../src/cli.js';
 import * as cli from '../src/cli.js';
-import * as algorithmes from '../src/algorithmes.js';
+import * as algorithms from '../src/algorithms.js';
 import readlineSync from 'readline-sync'; // КАК СДЕЛАТЬ ГЛОБАЛЬНЫМ импорт readlineSync
+
+
+// =====================================================
+// =====  Игра "Проверка на чётность" =====
+// =====================================================
 
 cli.askQuestion();
 console.log("Answer 'Yes' if the number is even, otherwise answer 'No'");
-
-let countTry=3;
-let countFalse=3;
-while (countTry==3 || countFalse==3 ) { // когда countTry или countFalse будет равно 0, условие станет ложным, и цикл остановится
-
-// задавай вопрос в цикле
-const randomNumber = algorithmes.getRandomInRange(1,100);
-console.log("Question: " + randomNumber);
-let answer = readlineSync.question('Your answer(y/n): ');
-let userAnswer=setBooleanAnswer(answer);
-let correctAnswer = algorithmes.definePrime(randomNumber);
-
-// проверка на правильный ответ или нет
-  if(algorithmes.isCorrect(correctAnswer,userAnswer)){
-  //console.log('Variant 1 ' + ' countFalse= '+ countFalse + ' countTry= ' + countTry);
-  countTry--;
-  }else{
-  //console.log('Variant 2 ' + ' countFalse= '+ countFalse + ' countTry= ' + countTry);
-  countFalse--;
-  }
-
-}
+let countTry=0;
+recursionAskQuestions(countTry);
 
 
-console.log('Congratulations, ' + userName + '!');
 
+
+
+// =====================================================
+// =====  вспомогательные методы(Вынести в утилс)  =====
+// =====================================================
 
 //можно дополнить вариантами
 function setBooleanAnswer(strAnswer){
@@ -38,4 +27,39 @@ if (strAnswer=="y" || strAnswer == "Y" || strAnswer == "yes" || strAnswer == "Ye
  return true;
  }
  return false;
+}
+
+//метод использующий рекурсию!(не рекурсивный процесс!)
+function recursionAskQuestions(countTry){
+//console.log(' === SOUT === countTry  ' + countTry); //отладка
+
+//момент остановка векурсии.
+  if (countTry === 3) {
+    console.log('Congratulations, ' + userName + '!');
+    return;  //break; todo момент с return
+  }
+const randomNumber = algorithms.getRandomInRange(1,100);
+console.log("Question: " + randomNumber);
+let answer = readlineSync.question('Your answer(y/n): ');
+let userAnswer=setBooleanAnswer(answer);
+let correctAnswer = algorithms.definePrime(randomNumber);
+
+// проверка на правильный ответ или нет
+  if(algorithms.isCorrect(correctAnswer,userAnswer)){
+  countTry++;
+  console.log("Correct!");
+  }else{
+  console.log("It is wrong answer. Correct answer was " +convertCorrectAnswer(correctAnswer)+ ". Let's try again, "+ userName + '!');
+  return;
+  }
+
+  return recursionAskQuestions(countTry);
+};
+
+
+function convertCorrectAnswer(boolleanAnswer){
+if (boolleanAnswer===true){
+ return "'Yes'";
+ }
+ return "'No'";
 }
