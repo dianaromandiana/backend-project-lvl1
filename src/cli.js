@@ -1,4 +1,10 @@
 import readlineSync from 'readline-sync';
 
-const name = readlineSync.question('Your answer: ');
-console.log("Hello, " + name + "!");
+export var userName = '';
+
+export function askQuestion(){
+console.log("Welcome to the Brain Games!");
+userName = readlineSync.question('May I have your name? ');
+console.log("Hello, " + userName + "!");
+}
+
