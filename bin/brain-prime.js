@@ -1,26 +1,21 @@
 import {userName} from '../src/cli.js';
 import * as cli from '../src/cli.js';
-import * as algorithms from '../src/algorithms.js';
 import * as utils from '../src/utils.js';
-import readlineSync from 'readline-sync'; // КАК СДЕЛАТЬ ГЛОБАЛЬНЫМ импорт readlineSync
-
+import * as algorithms from '../src/algorithms.js';
+import readlineSync from 'readline-sync';
 
 // =====================================================
-// ==========  Игра "Проверка на чётность" ============
+// ============  Игра "Простое ли число?" ==============
 // =====================================================
 
+// основной блок
 cli.askQuestion();
-console.log("Answer 'Yes' if the number is even, otherwise answer 'No'");
+console.log("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 let countTry=0;
 recursionAskQuestions(countTry);
 
 
-
-
-
-// =====================================================
-// =====  вспомогательные методы(Вынести в утилс)  =====
-// =====================================================
+// вспомогательный блок
 
 
 //метод использующий рекурсию!(не рекурсивный процесс!)
@@ -30,13 +25,13 @@ function recursionAskQuestions(count){
 //момент остановка векурсии.
   if (count === 3) {
     console.log('Congratulations, ' + userName + '!');
-    return;  //break; todo момент с return
+    return;
   }
-const randomNumber = algorithms.getRandomInRange(1,100);
-console.log("Question: " + randomNumber);
-let answer = readlineSync.question('Your answer(y/n): ');
-let userAnswer=utils.setBooleanAnswer(answer);
-let correctAnswer = algorithms.isOdd(randomNumber);
+  const randomNumber = algorithms.getRandomInRange(1,100);
+  console.log("Question: " + randomNumber);
+  let answer = readlineSync.question('Your answer(y/n): ');
+  let userAnswer=utils.setBooleanAnswer(answer);
+  let correctAnswer = algorithms.isPrime(randomNumber);
 
 // проверка на правильный ответ или нет
   if(utils.isCorrect(correctAnswer,userAnswer)){
@@ -49,4 +44,3 @@ let correctAnswer = algorithms.isOdd(randomNumber);
 
   return recursionAskQuestions(count);
 };
-

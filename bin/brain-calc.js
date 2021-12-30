@@ -11,8 +11,7 @@ import readlineSync from 'readline-sync';
 cli.askQuestion();
 console.log("Answer 'Yes' if the number is even, otherwise answer 'No'");
 let mathExpressionArr = generationRandomMathematicalExpression();
-//console.log("AAAAAAAAAAA   mathExpression: " + mathExpression);
-//utils.recursionAskQuestions(0,mathExpressionArr);
+console.log("===== SOUT =====   mathExpression: " + mathExpressionArr);
 recursionAskQuestions(0,mathExpressionArr);
 
 
@@ -27,13 +26,13 @@ function generationRandomMathematicalExpression(){
  const arr=[];
  //Первый операнд
   arr[0] = algorithms.getRandomInRange(-100,100);
-      console.log('aaaaaaaaa arr[0]' + arr[0] );
+     // console.log('aaaaaaaaa arr[0]' + arr[0] );
  //Второй операнд
   arr[1] = algorithms.getRandomInRange(-100,100);
-      console.log('aaaaaaaaa arr[1]' + arr[1] );
+     // console.log('aaaaaaaaa arr[1]' + arr[1] );
  //оператор
-  arr[2] = (arr[0]).toString()+(arr[1]).toString();
-      console.log('aaaaaaaaa arr[2]' + arr[2] );
+  arr[2] = '+';
+     // console.log('aaaaaaaaa arr[2]' + arr[2] );
  return arr;
 }
 
@@ -49,16 +48,17 @@ function recursionAskQuestions(count, mathExpressionArr){
     return;
   }
 
-console.log("Question: " + mathExpressionArr[2] + " =?");
+console.log("Question: " + mathExpressionArr[0] + mathExpressionArr[2] + mathExpressionArr[1] + " =?");
 let userAnswer = readlineSync.question('Your answer: ');
-let correctAnswer = (mathExpression[0])+(mathExpressionArr[1]);
+let correctAnswer = (mathExpressionArr[0])+(mathExpressionArr[1]);
 
 // проверка на правильный ответ или нет
-  if(algorithms.isCorrect(correctAnswer,userAnswer)){
+  if(correctAnswer==userAnswer){
   count++;
   console.log("Correct!");
+  mathExpressionArr = generationRandomMathematicalExpression();
   }else{
-  console.log("It is wrong answer. Correct answer was " +convertCorrectAnswer(correctAnswer)+ ". Let's try again, "+ userName + '!');
+  console.log("It is wrong answer. Correct answer was " + correctAnswer + ". Let's try again, "+ userName + '!');
   return;
   }
 
