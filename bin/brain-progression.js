@@ -56,7 +56,7 @@ let correctAnswer = mathExpression;
   count++;
   console.log("Correct!");
 
-  // ===== todo КАК БЫ СДЕЛАТЬ ЭТО УНИВЕРСАЛЬНО ЁПРСТ
+  // ===== todo КАК БЫ СДЕЛАТЬ ЭТО УНИВЕРСАЛЬНО?
   // ===== todo generatedPath();
   progression = algorithms.generatedArithmeticProgression(size);
   positionHiddenElement=algorithms.getRandomInRange(0,size-1);

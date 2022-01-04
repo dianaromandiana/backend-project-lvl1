@@ -1,4 +1,4 @@
-//Проверка на четность
+//Проверка на нечетность
 export function isOdd(number){
 return (number % 2 == 0) ? true : false;
 }
@@ -20,6 +20,41 @@ export function getRandomInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//Случайный оператор. Вернётся как строка
+export function getStrOperator() {
+  let characters = [ '+', '*','-']
+  let result = characters[(Math.floor(Math.random() * 3))];
+ return result;
+}
+
+//Случайный оператор. Вернётся как массив( 1 - символ, 2 - результат выражения)
+export function getRandomOperator(x,y) {
+  let operator = [ add(x,y), multiply(x,y), subtract(x,y) ];
+  let result = operator[(Math.floor(Math.random() * 3))];
+  console.log('===  getRandomOperator() === result = ' + result );
+ return result;
+}
+
+export function add(x,y) {
+  let arr = [];
+  arr[0] = '+';
+  arr[1] = x + y
+  return arr;
+}
+
+export function multiply(x,y) {
+  let arr = [];
+  arr[0] = '*';
+  arr[1] = x * y
+  return arr;
+}
+
+export function subtract(x,y) {
+  let arr = [];
+  arr[0] = '-';
+  arr[1] = x - y;
+  return arr;
+}
 
 //Find the greatest common divisor (GCD)
 //Найти наибольший общий делитель (НОД)

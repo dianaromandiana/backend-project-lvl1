@@ -1,8 +1,10 @@
+#!/usr/bin/env node
+
 import {userName} from '../src/cli.js';
 import * as cli from '../src/cli.js';
 import * as algorithms from '../src/algorithms.js';
 import * as utils from '../src/utils.js';
-import readlineSync from 'readline-sync'; // КАК СДЕЛАТЬ ГЛОБАЛЬНЫМ импорт readlineSync
+import readlineSync from 'readline-sync';
 
 
 // =====================================================
@@ -13,7 +15,6 @@ cli.askQuestion();
 console.log("Answer 'Yes' if the number is even, otherwise answer 'No'");
 let countTry=0;
 recursionAskQuestions(countTry);
-
 
 
 

@@ -9,11 +9,9 @@ import readlineSync from 'readline-sync';
 // =====================================================
 
 cli.askQuestion();
-console.log("Answer 'Yes' if the number is even, otherwise answer 'No'");
+console.log("What is the result of the expression?");
 let mathExpressionArr = generationRandomMathematicalExpression();
-console.log("===== SOUT =====   mathExpression: " + mathExpressionArr);
 recursionAskQuestions(0,mathExpressionArr);
-
 
 
 
@@ -25,22 +23,18 @@ recursionAskQuestions(0,mathExpressionArr);
 function generationRandomMathematicalExpression(){
  const arr=[];
  //Первый операнд
-  arr[0] = algorithms.getRandomInRange(-100,100);
-     // console.log('aaaaaaaaa arr[0]' + arr[0] );
+  arr[0] = algorithms.getRandomInRange(0,100);
  //Второй операнд
-  arr[1] = algorithms.getRandomInRange(-100,100);
-     // console.log('aaaaaaaaa arr[1]' + arr[1] );
+  arr[1] = algorithms.getRandomInRange(0,100);
  //оператор
-  arr[2] = '+';
-     // console.log('aaaaaaaaa arr[2]' + arr[2] );
+  arr[2] =  algorithms.getRandomOperator(arr[0],arr[1]);
  return arr;
 }
 
 
-
 //метод использующий рекурсию!(не рекурсивный процесс!)
 function recursionAskQuestions(count, mathExpressionArr){
-//console.log(' === SOUT === count  ' + count); //отладка
+//console.log(' === SOUT === mathExpressionArr  ' + mathExpressionArr); //отладка
 
 //момент остановка векурсии.
   if (count === 3) {
@@ -48,9 +42,12 @@ function recursionAskQuestions(count, mathExpressionArr){
     return;
   }
 
-console.log("Question: " + mathExpressionArr[0] + mathExpressionArr[2] + mathExpressionArr[1] + " =?");
+var nameOfMathExpression = mathExpressionArr[2][0]; //символ
+var resulrOfMathExpression = mathExpressionArr[2][1]; // результат вычисления
+
+console.log(`Question: ${mathExpressionArr[0]}${nameOfMathExpression}${mathExpressionArr[1]}`);
 let userAnswer = readlineSync.question('Your answer: ');
-let correctAnswer = (mathExpressionArr[0])+(mathExpressionArr[1]);
+let correctAnswer = resulrOfMathExpression;
 
 // проверка на правильный ответ или нет
   if(correctAnswer==userAnswer){

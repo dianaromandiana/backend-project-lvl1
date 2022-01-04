@@ -62,13 +62,11 @@ let correctAnswer = mathExpression;
   count++;
   console.log("Correct!");
 
-  // ===== todo КАК БЫ СДЕЛАТЬ ЭТО УНИВЕРСАЛЬНО ЁПРСТ
-
+  // ===== todo КАК БЫ СДЕЛАТЬ ЭТО УНИВЕРСАЛЬНО
   randomNumber1 = algorithms.getRandomInRange(1,100);
   randomNumber2 = algorithms.getRandomInRange(1,100);
   mathExpression = algorithms.gcd_rec(randomNumber1,randomNumber2);
   question = generatedQuestion(randomNumber1,randomNumber2);
-
   // ===== todo generatedPath();
   // generatedPath();
 
